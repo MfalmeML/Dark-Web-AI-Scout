@@ -1,4 +1,11 @@
-from src.utils.masking import mask, mask_cc, mask_email, mask_password, mask_ssn
+from src.utils.masking import (
+    mask,
+    mask_cc,
+    mask_email,
+    mask_password,
+    mask_ssn,
+    may_store_plaintext,
+)
 
 
 def test_mask_email_basic():
@@ -43,3 +50,7 @@ def test_mask_dispatcher_unknown_type():
 
 def test_mask_dispatcher_routes_email():
     assert mask("email", "john@example.com") == "jo***@e***.com"
+
+
+def test_default_config_forbids_plaintext():
+    assert may_store_plaintext() is False

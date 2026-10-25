@@ -1,4 +1,7 @@
 """Return first 2 chars of local part + domain TLD only. Example: jo***@g***.com"""
+from src.config.loader import get_compliance_mode, load_config
+
+
 def mask_email(value: str) -> str:
     if "@" not in value:
         return "***"
@@ -41,3 +44,7 @@ MASKERS = {
 def mask(entity_type: str, value: str) -> str:
     fn = MASKERS.get(entity_type)
     return fn(value) if fn else "***"
+
+
+def may_store_plaintext() -> bool:
+    return get_compliance_mode(load_config()) != "strict"
