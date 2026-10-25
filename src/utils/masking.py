@@ -1,6 +1,11 @@
 """Return first 2 chars of local part + domain TLD only. Example: jo***@g***.com"""
 def mask_email(value: str) -> str:
-    ...
+    if "@" not in value:
+        return "***"
+    local, domain = value.split("@", 1)
+    masked_local = local[:2] + "***" if len(local) > 2 else "***"
+    tld = domain.split(".")[-1]
+    return f"{masked_local}@{domain[0]}***.{tld}"
 
 
 def mask_password(value: str) -> str:
