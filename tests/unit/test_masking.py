@@ -1,4 +1,4 @@
-from src.utils.masking import mask_cc, mask_email, mask_password
+from src.utils.masking import mask_cc, mask_email, mask_password, mask_ssn
 
 
 def test_mask_email_basic():
@@ -27,3 +27,11 @@ def test_mask_cc_basic():
 
 def test_mask_cc_with_spaces():
     assert mask_cc("4111 1111 1111 1111") == "41************11"
+
+
+def test_mask_ssn_basic():
+    assert mask_ssn("123-45-6789") == "***-**-6789"
+
+
+def test_mask_ssn_no_dashes():
+    assert mask_ssn("123456789") == "***-**-6789"

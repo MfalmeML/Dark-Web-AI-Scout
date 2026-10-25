@@ -24,4 +24,7 @@ def mask_cc(value: str) -> str:
 
 
 def mask_ssn(value: str) -> str:
-    ...
+    digits = "".join(c for c in value if c.isdigit())
+    if len(digits) != 9:
+        return "***"
+    return f"***-**-{digits[-4:]}"
