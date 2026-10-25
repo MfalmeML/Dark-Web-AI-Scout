@@ -59,4 +59,5 @@ data/models/trained/
 .env.production.local
 secrets/
 keys/
+.phase0-0.2.done
 EOF
