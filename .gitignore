@@ -60,4 +60,5 @@ data/models/trained/
 secrets/
 keys/
 .phase0-0.2.done
+audit_log.jsonl
 EOF
