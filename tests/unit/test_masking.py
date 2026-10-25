@@ -1,4 +1,4 @@
-from src.utils.masking import mask_cc, mask_email, mask_password, mask_ssn
+from src.utils.masking import mask, mask_cc, mask_email, mask_password, mask_ssn
 
 
 def test_mask_email_basic():
@@ -35,3 +35,11 @@ def test_mask_ssn_basic():
 
 def test_mask_ssn_no_dashes():
     assert mask_ssn("123456789") == "***-**-6789"
+
+
+def test_mask_dispatcher_unknown_type():
+    assert mask("unknown", "anything") == "***"
+
+
+def test_mask_dispatcher_routes_email():
+    assert mask("email", "john@example.com") == "jo***@e***.com"

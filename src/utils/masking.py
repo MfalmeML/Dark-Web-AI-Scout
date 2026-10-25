@@ -28,3 +28,16 @@ def mask_ssn(value: str) -> str:
     if len(digits) != 9:
         return "***"
     return f"***-**-{digits[-4:]}"
+
+
+MASKERS = {
+    "email": mask_email,
+    "password": mask_password,
+    "credit_card": mask_cc,
+    "ssn": mask_ssn,
+}
+
+
+def mask(entity_type: str, value: str) -> str:
+    fn = MASKERS.get(entity_type)
+    return fn(value) if fn else "***"
