@@ -58,6 +58,7 @@ classification:
   
 # Safety Configuration
 safety:
+  compliance_mode: strict
   max_content_size_mb: 10
   image_filtering: true
   illegal_content_filter: strict
