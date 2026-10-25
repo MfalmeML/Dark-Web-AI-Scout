@@ -9,7 +9,11 @@ def mask_email(value: str) -> str:
 
 
 def mask_password(value: str) -> str:
-    ...
+    if not value:
+        return "***"
+    if len(value) <= 2:
+        return "***"
+    return value[:2] + "***"
 
 
 def mask_cc(value: str) -> str:
