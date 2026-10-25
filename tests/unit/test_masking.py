@@ -22,4 +22,8 @@ def test_mask_password_empty():
 
 
 def test_mask_cc_basic():
-    assert mask_cc("4111111111111111") == "41**********11"
+    assert mask_cc("4111111111111111") == "41************11"
+
+
+def test_mask_cc_with_spaces():
+    assert mask_cc("4111 1111 1111 1111") == "41************11"

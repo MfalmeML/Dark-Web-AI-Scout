@@ -17,7 +17,10 @@ def mask_password(value: str) -> str:
 
 
 def mask_cc(value: str) -> str:
-    ...
+    digits = "".join(c for c in value if c.isdigit())
+    if len(digits) < 4:
+        return "***"
+    return digits[:2] + "*" * (len(digits) - 4) + digits[-2:]
 
 
 def mask_ssn(value: str) -> str:
